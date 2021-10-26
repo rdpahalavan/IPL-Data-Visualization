@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    
+    <!-- Custom Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        
+        /*the container must be positioned relative:*/
+        .autocomplete {
+          position: relative;
+          display: inline-block;
+        }
+        
+        input {
+          border: 1px solid transparent;
+          background-color: #f1f1f1;
+          padding: 10px;
+          font-size: 16px;
+        }
+        
+        input[type=text] {
+          background-color: #f1f1f1;
+          width: 100%;
+        }
+        
+        input[type=submit] {
+          background-color: DodgerBlue;
+          color: #fff;
+          cursor: pointer;
+        }
+        
+        .autocomplete-items {
+          position: absolute;
+          border: 1px solid #d4d4d4;
+          border-bottom: none;
+          border-top: none;
+          z-index: 99;
+          /*position the autocomplete items to be the same width as the container:*/
+          top: 100%;
+          left: 0;
+          right: 0;
+        }
+        
+        .autocomplete-items div {
+          padding: 10px;
+          cursor: pointer;
+          background-color: #fff; 
+          border-bottom: 1px solid #d4d4d4; 
+        }
+        
+        /*when hovering an item:*/
+        .autocomplete-items div:hover {
+          background-color: #e9e9e9; 
+        }
+        
+        /*when navigating through the items using the arrow keys:*/
+        .autocomplete-active {
+          background-color: DodgerBlue !important; 
+          color: #ffffff; 
+        }
+        </style>
+
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img alt="" class="rounded-circle mt-4" src="images/logo.png" height=100 width=100>
+                            
+                            <h4 class="card-widget__title text-dark mt-3">IPL Data Visualization 2021</h4>
+                            <p class="text-muted">PAHALAVAN R D</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+                <div class="container-fluid">
+
+                  <div class="row">
+                      <div class="col-12">
+                          <div class="card">
+                              <div class="card-body text-center">
+                                <h5 class="center-1">Search Batsman Name or Select using the Chart</h5>
+                                <br>
+                                <form autocomplete="off" action="/batsman.html" target="_blank">
+                                  <div class="autocomplete" style="width:300px;">
+                                    <input id="batsman" type="text" name="player" placeholder="Player Name">
+                                  </div>
+                                  <input type="submit" value="OPEN">
+                                </form>
+
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+                              <!--**********************************
+                                            CHART 1
+                              ***********************************-->
+                                <div id="chart1" style="width: 100%;height:500px;"></div>
+                                
+                                <p class="center-1">Most Runs Scored in IPL</p>
+
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                    <div class="row">
+                      <div class="col-12">
+                          <div class="card">
+                              <div class="card-body text-center">
+                                <h5 class="center-1">Search Bowler Name or Select using the Chart</h5>
+                                <br>
+                                <form autocomplete="off" action="/bowler.html" target="_blank">
+                                  <div class="autocomplete" style="width:300px;">
+                                    <input id="bowler" type="text" name="player" placeholder="Player Name">
+                                  </div>
+                                  <input type="submit" value="OPEN">
+                                </form>
+
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+                              <!--**********************************
+                                            CHART 2
+                              ***********************************-->
+                                <div id="chart2" style="width: 100%;height:500px;"></div>
+                                
+                                <p class="center-1">Most Wickets Taken in IPL</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+              </div>
+            
+
+              
+
+            
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by Pahalavan R D</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+
+    <script>
+        function autocomplete(inp, arr) {
+          /*the autocomplete function takes two arguments,
+          the text field element and an array of possible autocompleted values:*/
+          var currentFocus;
+          /*execute a function when someone writes in the text field:*/
+          inp.addEventListener("input", function(e) {
+              var a, b, i, val = this.value;
+              /*close any already open lists of autocompleted values*/
+              closeAllLists();
+              if (!val) { return false;}
+              currentFocus = -1;
+              /*create a DIV element that will contain the items (values):*/
+              a = document.createElement("DIV");
+              a.setAttribute("id", this.id + "autocomplete-list");
+              a.setAttribute("class", "autocomplete-items");
+              /*append the DIV element as a child of the autocomplete container:*/
+              this.parentNode.appendChild(a);
+              /*for each item in the array...*/
+              for (i = 0; i < arr.length; i++) {
+                /*check if the item starts with the same letters as the text field value:*/
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                  /*create a DIV element for each matching element:*/
+                  b = document.createElement("DIV");
+                  /*make the matching letters bold:*/
+                  b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                  b.innerHTML += arr[i].substr(val.length);
+                  /*insert a input field that will hold the current array item's value:*/
+                  b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                  /*execute a function when someone clicks on the item value (DIV element):*/
+                  b.addEventListener("click", function(e) {
+                      /*insert the value for the autocomplete text field:*/
+                      inp.value = this.getElementsByTagName("input")[0].value;
+                      /*close the list of autocompleted values,
+                      (or any other open lists of autocompleted values:*/
+                      closeAllLists();
+                  });
+                  a.appendChild(b);
+                }
+              }
+          });
+          /*execute a function presses a key on the keyboard:*/
+          inp.addEventListener("keydown", function(e) {
+              var x = document.getElementById(this.id + "autocomplete-list");
+              if (x) x = x.getElementsByTagName("div");
+              if (e.keyCode == 40) {
+                /*If the arrow DOWN key is pressed,
+                increase the currentFocus variable:*/
+                currentFocus++;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 38) { //up
+                /*If the arrow UP key is pressed,
+                decrease the currentFocus variable:*/
+                currentFocus--;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 13) {
+                /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                e.preventDefault();
+                if (currentFocus > -1) {
+                  /*and simulate a click on the "active" item:*/
+                  if (x) x[currentFocus].click();
+                }
+              }
+          });
+          function addActive(x) {
+            /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            /*add class "autocomplete-active":*/
+            x[currentFocus].classList.add("autocomplete-active");
+          }
+          function removeActive(x) {
+            /*a function to remove the "active" class from all autocomplete items:*/
+            for (var i = 0; i < x.length; i++) {
+              x[i].classList.remove("autocomplete-active");
+            }
+          }
+          function closeAllLists(elmnt) {
+            /*close all autocomplete lists in the document,
+            except the one passed as an argument:*/
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+              if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+              }
+            }
+          }
+          /*execute a function when someone clicks in the document:*/
+          document.addEventListener("click", function (e) {
+              closeAllLists(e.target);
+          });
+        }        
+       
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.1/echarts.min.js" integrity="sha512-17GGcT5BjSbaXG+4Fk3Z1HS1ATXH5oEH060GS3WvSEqGGpkSbRV/amkIWpqOJOIwkBW13QMOBblj8DXnlN7bEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="plugins/common/common.min.js"></script>
+    <script src="js/custom.min.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/echart.js"></script>
+    <script src="js/gleek.js"></script>
+    <script src="js/styleSwitcher.js"></script>
+
+
+    <script src="./js/dashboard/dashboard-1.js"></script>
+
+    <script>
+        // CHART 1 INITIOALIZATION
+
+        var chartDom1 = document.getElementById('chart1');
+        var myChart1 = echarts.init(chartDom1);
+        var option1;
+
+        // CHART 2 INITIOALIZATION
+
+        var chartDom2 = document.getElementById('chart2');
+        var myChart2 = echarts.init(chartDom2);
+        var option2;
+
+        $.get('https://rdpahalavan.pythonanywhere.com/static/most_runs.json',
+         function (most_runs) {
+            autocomplete(document.getElementById("batsman"), Object.keys(most_runs).map(el=> el));
+            myChart1.hideLoading();
+            option1 = {
+              
+              tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                  type: 'shadow',
+                  label: {
+                    show: true
+                  }
+                }
+              },
+              calculable: true,
+              grid: {
+                top: '12%',
+                left: '1%',
+                right: '10%',
+                containLabel: true
+              },
+              xAxis: [
+                {
+                  type: 'category',
+                  data: Object.keys(most_runs).map(el=> el)
+                }
+              ],
+              yAxis: [
+                {
+                  type: 'value',
+                  axisLabel: {
+                    formatter: function (a) {
+                      a = +a;
+                      return isFinite(a) ? echarts.format.addCommas(+a / 1) : '';
+                    }
+                  }
+                }
+              ],
+              dataZoom: [
+                {
+                  show: true,
+                  start: 0,
+                  end: 100
+                },
+                {
+                  type: 'inside',
+                  start: 0,
+                  end: 100
+                },
+                {
+                  show: true,
+                  yAxisIndex: 0,
+                  filterMode: 'empty',
+                  width: 30,
+                  height: '80%',
+                  showDataShadow: false,
+                  left: '93%'
+                }
+              ],
+              series: [
+                {
+                  name: 'Total Runs',
+                  type: 'bar',
+                  data: Object.values(most_runs).map(el=> el['Runs All'])
+                }
+              ]
+            };
+            myChart1.setOption(option1);
+            myChart1.on('click', function (id){
+              window.open("/batsman.html?player="+id.name);                  
+            });
+
+        }
+        );
+
+        $.get('https://rdpahalavan.pythonanywhere.com/static/most_wickets.json',
+         function (most_wickets) {
+            autocomplete(document.getElementById("bowler"), Object.keys(most_wickets).map(el=> el));
+            myChart2.hideLoading();
+            option2 = {
+              
+              tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                  type: 'shadow',
+                  label: {
+                    show: true
+                  }
+                }
+              },
+              calculable: true,
+              grid: {
+                top: '12%',
+                left: '1%',
+                right: '10%',
+                containLabel: true
+              },
+              xAxis: [
+                {
+                  type: 'category',
+                  data: Object.keys(most_wickets).map(el=> el)
+                }
+              ],
+              yAxis: [
+                {
+                  type: 'value',
+                  axisLabel: {
+                    formatter: function (a) {
+                      a = +a;
+                      return isFinite(a) ? echarts.format.addCommas(+a / 1) : '';
+                    }
+                  }
+                }
+              ],
+              dataZoom: [
+                {
+                  show: true,
+                  start: 0,
+                  end: 100
+                },
+                {
+                  type: 'inside',
+                  start: 0,
+                  end: 100
+                },
+                {
+                  show: true,
+                  yAxisIndex: 0,
+                  filterMode: 'empty',
+                  width: 30,
+                  height: '80%',
+                  showDataShadow: false,
+                  left: '93%'
+                }
+              ],
+              series: [
+                {
+                  name: 'Total Wickets',
+                  type: 'bar',
+                  data: Object.values(most_wickets).map(el=> el['Wickets All'])
+                }
+              ]
+            };
+            myChart2.setOption(option2);
+            myChart2.on('click', function (id){
+              window.open("/bowler.html?player="+id.name);                  
+            });
+        }
+        );
+    </script>
+
+</body>
+
+</html>

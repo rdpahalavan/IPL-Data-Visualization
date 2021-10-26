@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <!-- Pignose Calender -->
+    <link href="./plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <!-- Chartist -->
+    <link rel="stylesheet" href="./plugins/chartist/css/chartist.min.css">
+    <link rel="stylesheet" href="./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <!-- Custom Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img alt="" class="rounded-circle mt-4" src="images/logo.png" height=100 width=100>
+                            <h4 id='value17' class="card-widget__title text-dark mt-3"></h4>
+                            <p id='value18' class="text-muted"></p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            <div id='RunsView' class="container-fluid mt-3">
+
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-1">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Total Matches</h3>
+                                <div class="d-inline-block">
+                                    <h1 id='value2' class="text-white"></h1>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-2">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Total Runs</h3>
+                                <div class="d-inline-block">
+                                    <h1 id='value1' class="text-white"></h1>
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-3">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Strike Rate</h3>
+                                <div class="d-inline-block">
+                                    <h1 id='value3' class="text-white"></h1>
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-4">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Highest Score</h3>
+                                <div class="d-inline-block">
+                                    <h1 id='value4' class="text-white"></h1>
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body pb-0 d-flex justify-content-between">
+                                        <div>
+                                            <h4 class="mb-1">Total Runs Scored Per Season</h4>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="chart-wrapper">
+
+                                        <!--**********************************
+                                            CHART 1
+                                        ***********************************-->
+                                        <div id="chart1" style="width: 100%;height:500px;"></div>
+
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            
+                            <div class="card-body">
+                                
+                                        <h4 class="center-1">Batting Strike Rate</h4>
+                                <!--**********************************
+                                            CHART 4
+                                 ***********************************-->
+                                        <div id="chart4" style="width: 100%;height:400px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            
+                            <div class="card-body">
+                                
+                                        <h4 class="center-1">Batting Average</h4>                                
+                                <!--**********************************
+                                            CHART 5
+                                 ***********************************-->
+                                        <div id="chart5" style="width: 100%;height:400px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body pb-0 d-flex justify-content-between">
+                                        <div>
+                                            <h4 class="mb-1">Strike Rate and Avearge Per Season</h4>
+                                            <br>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="chart-wrapper">
+
+                                        <!--**********************************
+                                            CHART 2
+                                        ***********************************-->
+
+                                        <div id="chart2" style="width: 100%;height:500px;"></div>
+
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body pb-0 d-flex justify-content-between">
+                                        <div>
+                                            <h4 class="mb-1">Balls Faced and Runs Scored</h4>
+                                            <br>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="chart-wrapper">
+
+                                        <!--**********************************
+                                            CHART 6
+                                        ***********************************-->
+
+                                        <div id="chart6" style="width: 100%;height:500px;"></div>
+
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body pb-0 d-flex justify-content-between">
+                                        <div>
+                                            <h4 class="mb-1">Total Matches and Innings Played Per Season</h4>
+                                            <br>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="chart-wrapper">
+
+                                        <!--**********************************
+                                            CHART 3
+                                        ***********************************-->
+
+                                        <div id="chart3" style="width: 100%;height:500px;"></div>
+
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body pb-0 d-flex justify-content-between">
+                                        <div>
+                                            <h4 class="mb-1">Fours and Sixes Per Season</h4>
+                                            <br>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="chart-wrapper">
+
+                                        <!--**********************************
+                                            CHART 9
+                                        ***********************************-->
+
+                                        <div id="chart9" style="width: 100%;height:500px;"></div>
+
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            
+                            <div class="card-body">
+                                
+                                        <h4 class="center-1">Runs by Sixes and Fours</h4>
+                                <!--**********************************
+                                            CHART 7
+                                 ***********************************-->
+                                        <div id="chart7" style="width: 100%;height:400px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            
+                            <div class="card-body">
+                                
+                                        <h4 class="center-1">Half Centuries and Centuries</h4>                                
+                                <!--**********************************
+                                            CHART 8
+                                 ***********************************-->
+                                        <div id="chart8" style="width: 100%;height:400px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="row">
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="social-graph-wrapper widget-facebook">
+                                    <br>
+                                    <h4 class="center-1 text-white">Most Runs in</h4>
+                                </div>
+                                <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                    <h1 id='value11' class="text-black"></h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="social-graph-wrapper widget-linkedin">
+                                    <br>
+                                    <h4 class="center-1 text-white">Highest Strike Rate in</h4>
+                                </div>
+                                <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                    <h1 id='value12' class="text-black"></h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="social-graph-wrapper widget-googleplus">
+                                    <br>
+                                    <h4 class="center-1 text-white">Highest Average in</h4>
+                                </div>
+                                <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                    <h1 id='value13' class="text-black"></h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="social-graph-wrapper widget-twitter">
+                                    <br>
+                                    <h4 class="center-1 text-white">Most 50+ Score in</h4> 
+                                </div>
+                                <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                    <h1 id='value14' class="text-black"></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by Pahalavan R D</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.1/echarts.min.js" integrity="sha512-17GGcT5BjSbaXG+4Fk3Z1HS1ATXH5oEH060GS3WvSEqGGpkSbRV/amkIWpqOJOIwkBW13QMOBblj8DXnlN7bEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="plugins/common/common.min.js"></script>
+    <script src="js/custom.min.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/echart.js"></script>
+    <script src="js/gleek.js"></script>
+    <script src="js/styleSwitcher.js"></script>
+
+    <script>
+        var elementView = document.getElementById("RunsView");
+        elementView.scrollIntoView();
+    </script>
+
+    <script src="./js/dashboard/dashboard-1.js"></script>
+
+</body>
+
+</html>
