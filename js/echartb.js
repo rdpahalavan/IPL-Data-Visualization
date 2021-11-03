@@ -645,8 +645,8 @@ $.get('https://rdpahalavan.pythonanywhere.com/static/most_wickets.json',
     document.getElementById("value3").innerHTML = most_wickets[player_name]['Economy All'];
     document.getElementById("value4").innerHTML = most_wickets[player_name]['Best Bowling All'];
     document.getElementById("value11").innerHTML = year_date[array1.indexOf(Math.max(...array1))];
-    document.getElementById("value12").innerHTML = year_date[array3.indexOf(Math.min(...array3))];
-    document.getElementById("value13").innerHTML = year_date[array2.indexOf(Math.min(...array2))];
-    document.getElementById("value14").innerHTML = year_date[array8.indexOf(Math.max(...array8))];
+    document.getElementById("value12").innerHTML = year_date[array3.indexOf(Math.min.apply(null, array3.filter(Boolean)))];
+    document.getElementById("value13").innerHTML = year_date[array2.indexOf(Math.min.apply(null, array2.filter(Boolean)))];
+    document.getElementById("value14").innerHTML = Math.max(...array8)>0?year_date[array8.indexOf(Math.max(...array8))]:'N/A';
 }
 );

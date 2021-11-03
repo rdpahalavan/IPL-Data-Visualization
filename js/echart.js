@@ -637,6 +637,6 @@ $.get('https://rdpahalavan.pythonanywhere.com/static/most_runs.json',
     document.getElementById("value11").innerHTML = year_date[array1.indexOf(Math.max(...array1))];
     document.getElementById("value12").innerHTML = year_date[array2.indexOf(Math.max(...array2))];
     document.getElementById("value13").innerHTML = year_date[array3.indexOf(Math.max(...array3))];
-    document.getElementById("value14").innerHTML = year_date[array8.indexOf(Math.max(...array8))];
+    document.getElementById("value14").innerHTML = Math.max(...array8)>0?year_date[array8.indexOf(Math.max(...array8))]:'N/A';
 }
 );
