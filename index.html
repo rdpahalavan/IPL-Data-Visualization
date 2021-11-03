@@ -133,7 +133,7 @@
                               <div class="card-body text-center">
                                 <h5 class="center-1">Search Batsman Name or Select using the Chart</h5>
                                 <br>
-                                <form autocomplete="off" action="/batsman.html" target="_blank">
+                                <form autocomplete="off" action="/ipl/batsman.html" target="_blank">
                                   <div class="autocomplete" style="width:300px;">
                                     <input id="batsman" type="text" name="player" placeholder="Player Name" required>
                                   </div>
@@ -167,7 +167,7 @@
                               <div class="card-body text-center">
                                 <h5 class="center-1">Search Bowler Name or Select using the Chart</h5>
                                 <br>
-                                <form autocomplete="off" action="/bowler.html" target="_blank">
+                                <form autocomplete="off" action="/ipl/bowler.html" target="_blank">
                                   <div class="autocomplete" style="width:300px;">
                                     <input id="bowler" type="text" name="player" placeholder="Player Name" required>
                                   </div>
@@ -203,7 +203,7 @@
                               <div class="card-body text-center">
                                 <h5 class="center-1">Comparison Between two Batsmen</h5>
                                 <br>
-                                <form autocomplete="off" action="/compare-batsmen.html" target="_blank">
+                                <form autocomplete="off" action="/ipl/compare-batsmen.html" target="_blank">
                                   <div class="autocomplete" style="width:300px;">
                                     <input id="batsman1" type="text" name="player1" placeholder="Player 1" required>
                                   </div>
@@ -225,7 +225,7 @@
                             <div class="card-body text-center">
                               <h5 class="center-1">Comparison Between two Bowlers</h5>
                               <br>
-                              <form autocomplete="off" action="/compare-bowlers.html" target="_blank">
+                              <form autocomplete="off" action="/ipl/compare-bowlers.html" target="_blank">
                                 <div class="autocomplete" style="width:300px;">
                                   <input id="bowler1" type="text" name="player1" placeholder="Player 1" required>
                                 </div>
@@ -484,7 +484,7 @@
             };
             myChart1.setOption(option1);
             myChart1.on('click', function (id){
-              window.open("/batsman.html?player="+id.name);                  
+              window.open("/ipl/batsman.html?player="+id.name);                  
             });
 
         }
@@ -563,7 +563,7 @@
             };
             myChart2.setOption(option2);
             myChart2.on('click', function (id){
-              window.open("/bowler.html?player="+id.name);                  
+              window.open("/ipl/bowler.html?player="+id.name);                  
             });
         }
         );
