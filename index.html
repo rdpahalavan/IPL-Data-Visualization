@@ -162,7 +162,21 @@
                               ***********************************-->
                                 <div id="chart1" style="width: 100%;height:500px;"></div>
                                 
-                                <p class="center-1">Most Runs Scored in IPL</p>
+                                <div class='center-1'>
+                                <div class="dropdown56">
+                                  <p id="value6">Most Runs in IPL</p>
+                                  <div class="dropdown-content56">
+                                    <a id="value7" href="javascript:changeValue('value7')"><p>Most Runs</p></a>
+                                    <a id="value8" href="javascript:changeValue('value8')"><p>Most Matches</p></a>
+                                    <a id="value9" href="javascript:changeValue('value9')"><p>Highest Strike Rate</p></a>
+                                    <a id="value10" href="javascript:changeValue('value10')"><p>Highest Average</p></a>
+                                    <a id="value11" href="javascript:changeValue('value11')"><p>Most Centuries</p></a>
+                                    <a id="value12" href="javascript:changeValue('value12')"><p>Most Half Cebturies</p></a>
+                                    <a id="value13" href="javascript:changeValue('value13')"><p>Most Sixes</p></a>
+                                    <a id="value14" href="javascript:changeValue('value14')"><p>Most Fours</p></a>
+                                  </div>
+                                </div>
+                              </div>
 
                             </div>
                         </div>
@@ -196,7 +210,19 @@
                               ***********************************-->
                                 <div id="chart2" style="width: 100%;height:500px;"></div>
                                 
-                                <p class="center-1">Most Wickets Taken in IPL</p>
+                                <div class='center-1'>
+                                  <div class="dropdown56">
+                                    <p id="value21">Most Wickets in IPL</p>
+                                    <div class="dropdown-content56">
+                                      <a id="value15" href="javascript:changeValue('value15')"><p>Most Wickets</p></a>
+                                      <a id="value16" href="javascript:changeValue('value16')"><p>Most Matches</p></a>
+                                      <a id="value17" href="javascript:changeValue('value17')"><p>Lowest Average</p></a>
+                                      <a id="value18" href="javascript:changeValue('value18')"><p>Lowest Economy</p></a>
+                                      <a id="value19" href="javascript:changeValue('value19')"><p>Most Dot Balls</p></a>
+                                      <a id="value20" href="javascript:changeValue('value20')"><p>Most Maiden Overs</p></a>
+                                    </div>
+                                  </div>
+                                </div>
 
                             </div>
                         </div>
@@ -418,11 +444,47 @@
         var myChart2 = echarts.init(chartDom2);
         var option2;
 
+        var name_array = {};
+        var matches_array = {};
+        var runs_array = {};
+        var average_array = {};
+        var strike_rate_array = {};
+        var centuries_array = {};
+        var half_centuries_array = {};
+        var sixes_array = {};
+        var fours_array = {};
+
         $.get('https://rdpahalavan.pythonanywhere.com/static/most_runs.json',
          function (most_runs) {
-            autocomplete(document.getElementById("batsman"), Object.keys(most_runs).map(el=> el));
-            autocomplete(document.getElementById("batsman1"), Object.keys(most_runs).map(el=> el));
-            autocomplete(document.getElementById("batsman2"), Object.keys(most_runs).map(el=> el));
+            name_array = Object.keys(most_runs).map(el=> el);
+            var m1 = Object.values(most_runs).map(el=> el['Matches All']);
+            name_array.forEach((key, i) => matches_array[key] = m1[i]);
+            matches_array = sortByValue(matches_array);
+            var m2 = Object.values(most_runs).map(el=> el['Runs All']);
+            name_array.forEach((key, i) => runs_array[key] = m2[i]);
+            runs_array = sortByValue(runs_array);
+            var m3 = Object.values(most_runs).map(el=> el['Average All']);
+            name_array.forEach((key, i) => average_array[key] = m3[i]);
+            average_array = sortByValue(average_array);
+            var m4 = Object.values(most_runs).map(el=> el['Strike Rate All']);
+            name_array.forEach((key, i) => strike_rate_array[key] = m4[i]);
+            strike_rate_array = sortByValue(strike_rate_array);
+            var m5 = Object.values(most_runs).map(el=> el['Centuries All']);
+            name_array.forEach((key, i) => centuries_array[key] = m5[i]);
+            centuries_array = sortByValue(centuries_array);
+            var m6 = Object.values(most_runs).map(el=> el['Half Centuries All']);
+            name_array.forEach((key, i) => half_centuries_array[key] = m6[i]);
+            half_centuries_array = sortByValue(half_centuries_array);
+            var m7 = Object.values(most_runs).map(el=> el['Sixes All']);
+            name_array.forEach((key, i) => sixes_array[key] = m7[i]);
+            sixes_array = sortByValue(sixes_array);
+            var m8 = Object.values(most_runs).map(el=> el['Fours All']);
+            name_array.forEach((key, i) => fours_array [key] = m8[i]);
+            fours_array = sortByValue(fours_array );
+
+            autocomplete(document.getElementById("batsman"), name_array);
+            autocomplete(document.getElementById("batsman1"), name_array);
+            autocomplete(document.getElementById("batsman2"), name_array);
             myChart1.hideLoading();
             option1 = {
               
@@ -445,7 +507,7 @@
               xAxis: [
                 {
                   type: 'category',
-                  data: Object.keys(most_runs).map(el=> el)
+                  data: Object.keys(runs_array)
                 }
               ],
               yAxis: [
@@ -484,7 +546,7 @@
                 {
                   name: 'Total Runs',
                   type: 'bar',
-                  data: Object.values(most_runs).map(el=> el['Runs All']),
+                  data: Object.values(runs_array),
                   color: '#5470c6'
                 }
               ]
@@ -497,11 +559,40 @@
         }
         );
 
+        var named_array = {};
+        var match_array = {};
+        var wickets_array = {};
+        var averaged_array = {};
+        var economy_array = {};
+        var dot_balls_array = {};
+        var maiden_overs_array = {};
+
         $.get('https://rdpahalavan.pythonanywhere.com/static/most_wickets.json',
          function (most_wickets) {
-            autocomplete(document.getElementById("bowler"), Object.keys(most_wickets).map(el=> el));
-            autocomplete(document.getElementById("bowler1"), Object.keys(most_wickets).map(el=> el));
-            autocomplete(document.getElementById("bowler2"), Object.keys(most_wickets).map(el=> el));
+
+            named_array = Object.keys(most_wickets).map(el=> el);
+            var m9 = Object.values(most_wickets).map(el=> el['Matches All']);
+            named_array.forEach((key, i) => match_array[key] = m9[i]);
+            match_array = sortByValue(match_array);
+            var m10 = Object.values(most_wickets).map(el=> el['Wickets All']);
+            named_array.forEach((key, i) => wickets_array[key] = m10[i]);
+            wickets_array = sortByValue(wickets_array);
+            var m11 = Object.values(most_wickets).map(el=> el['Average All']);
+            named_array.forEach((key, i) => averaged_array[key] = m11[i]);
+            averaged_array = sortByValue(averaged_array);
+            var m12 = Object.values(most_wickets).map(el=> el['Economy All']);
+            named_array.forEach((key, i) => economy_array[key] = m12[i]);
+            economy_array = sortByValue(economy_array);
+            var m13 = Object.values(most_wickets).map(el=> el['Dot Balls All']);
+            named_array.forEach((key, i) => dot_balls_array[key] = m13[i]);
+            dot_balls_array = sortByValue(dot_balls_array);
+            var m14 = Object.values(most_wickets).map(el=> el['Maiden Overs All']);
+            named_array.forEach((key, i) => maiden_overs_array[key] = m14[i]);
+            maiden_overs_array = sortByValue(maiden_overs_array);
+
+            autocomplete(document.getElementById("bowler"), named_array);
+            autocomplete(document.getElementById("bowler1"), named_array);
+            autocomplete(document.getElementById("bowler2"), named_array);
             myChart2.hideLoading();
             option2 = {
               
@@ -524,7 +615,7 @@
               xAxis: [
                 {
                   type: 'category',
-                  data: (Object.keys(most_wickets).map(el=> el)).reverse()
+                  data: Object.keys(wickets_array).reverse()
                 }
               ],
               yAxis: [
@@ -563,7 +654,7 @@
                 {
                   name: 'Total Wickets',
                   type: 'bar',
-                  data: (Object.values(most_wickets).map(el=> el['Wickets All'])).reverse(),
+                  data: Object.values(wickets_array).reverse(),
                   color: '#91cc75'
                 }
               ]
@@ -574,6 +665,110 @@
             });
         }
         );
+
+
+        function changeValue(val){
+        switch(val){
+          case 'value7': 
+            option1["series"][0]["data"]=Object.values(runs_array);
+            option1["xAxis"][0]["data"]=Object.keys(runs_array);
+            option1["series"][0]["name"]='Total Runs';
+            myChart1.setOption(option1);
+            document.getElementById("value6").innerHTML ='Most Runs in IPL';
+            break;
+          case 'value8': 
+            option1["series"][0]["data"]=Object.values(matches_array);
+            option1["xAxis"][0]["data"]=Object.keys(matches_array);
+            option1["series"][0]["name"]='Total Matches';
+            myChart1.setOption(option1);
+            document.getElementById("value6").innerHTML ='Most Matches in IPL';
+            break;
+          case 'value9': 
+            option1["series"][0]["data"]=Object.values(strike_rate_array);
+            option1["xAxis"][0]["data"]=Object.keys(strike_rate_array);
+            option1["series"][0]["name"]='Batting Strike Rate';
+            myChart1.setOption(option1);
+            document.getElementById("value6").innerHTML ='Highest Strike Rate in IPL';
+            break;
+          case 'value10': 
+            option1["series"][0]["data"]=Object.values(average_array);
+            option1["xAxis"][0]["data"]=Object.keys(average_array);
+            option1["series"][0]["name"]='Batting Average';
+            myChart1.setOption(option1);
+            document.getElementById("value6").innerHTML ='Highest Average in IPL';
+            break;
+          case 'value11': 
+            option1["series"][0]["data"]=Object.values(centuries_array);
+            option1["xAxis"][0]["data"]=Object.keys(centuries_array);
+            option1["series"][0]["name"]='Total Centuries';
+            myChart1.setOption(option1);
+            document.getElementById("value6").innerHTML ='Most Centuries in IPL';
+            break;
+          case 'value12': 
+            option1["series"][0]["data"]=Object.values(half_centuries_array);
+            option1["xAxis"][0]["data"]=Object.keys(half_centuries_array);
+            option1["series"][0]["name"]='Total Half Centuries';
+            myChart1.setOption(option1);
+            document.getElementById("value6").innerHTML ='Most Half Centuries in IPL';
+            break;
+          case 'value13': 
+            option1["series"][0]["data"]=Object.values(sixes_array);
+            option1["xAxis"][0]["data"]=Object.keys(sixes_array);
+            option1["series"][0]["name"]='Total Sixes';
+            myChart1.setOption(option1);
+            document.getElementById("value6").innerHTML ='Most Sixes in IPL';
+            break;
+          case 'value14': 
+            option1["series"][0]["data"]=Object.values(fours_array);
+            option1["xAxis"][0]["data"]=Object.keys(fours_array);
+            option1["series"][0]["name"]='Total Fours';
+            myChart1.setOption(option1);
+            document.getElementById("value6").innerHTML ='Most Fours in IPL';
+            break;
+          case 'value15': 
+            option2["series"][0]["data"]=Object.values(wickets_array).reverse();
+            option2["xAxis"][0]["data"]=Object.keys(wickets_array).reverse();
+            option2["series"][0]["name"]='Total Wickets';
+            myChart1.setOption(option1);
+            document.getElementById("value21").innerHTML ='Most Wickets in IPL';
+            break;
+          case 'value16': 
+            option2["series"][0]["data"]=Object.values(match_array).reverse();
+            option2["xAxis"][0]["data"]=Object.keys(match_array).reverse();
+            option2["series"][0]["name"]='Total Matches';
+            myChart2.setOption(option2);
+            document.getElementById("value21").innerHTML ='Most Matches in IPL';
+            break;
+          case 'value17': 
+            option2["series"][0]["data"]=Object.values(averaged_array).reverse();
+            option2["xAxis"][0]["data"]=Object.keys(averaged_array).reverse();
+            option2["series"][0]["name"]='Bowling Average';
+            myChart2.setOption(option2);
+            document.getElementById("value21").innerHTML ='Lowest Average in IPL';
+            break;
+          case 'value18': 
+            option2["series"][0]["data"]=Object.values(economy_array).reverse();
+            option2["xAxis"][0]["data"]=Object.keys(economy_array).reverse();
+            option2["series"][0]["name"]='Bowling Economy';
+            myChart2.setOption(option2);
+            document.getElementById("value21").innerHTML ='Lowest Economy in IPL';
+            break;
+          case 'value19': 
+            option2["series"][0]["data"]=Object.values(dot_balls_array).reverse();
+            option2["xAxis"][0]["data"]=Object.keys(dot_balls_array).reverse();
+            option2["series"][0]["name"]='Total Dot Balls';
+            myChart2.setOption(option2);
+            document.getElementById("value21").innerHTML ='Most Dot Balls in IPL';
+            break;
+          case 'value20': 
+            option2["series"][0]["data"]=Object.values(maiden_overs_array).reverse();
+            option2["xAxis"][0]["data"]=Object.keys(maiden_overs_array).reverse();
+            option2["series"][0]["name"]='Total Maiden Overs';
+            myChart2.setOption(option2);
+            document.getElementById("value21").innerHTML ='Most Maiden Overs in IPL';
+            break;
+        }
+      }
     </script>
 
     <script>
@@ -615,6 +810,29 @@
       }
       
       });
+      </script>
+
+      <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+
+      <script>
+
+      function sortByValue(object, descending = true) {
+        const { max, min } = Math;
+        const selector = descending ? max : min;
+
+        const objects = [];
+        const cloned = _.clone(object);
+
+        while (!_.isEmpty(cloned)) {
+          const selectedValue = selector(...Object.values(cloned));
+          const [key, value] = Object.entries(cloned).find(([, value]) => value === selectedValue);
+
+          objects.push({ [key]: value });
+          delete cloned[key];
+        }
+
+        return _.merge(...objects);
+      }
       </script>
 
 </body>
