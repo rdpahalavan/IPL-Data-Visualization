@@ -9,8 +9,14 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     
-    <!-- Custom Stylesheet -->
+    <!-- Custom Stylesheet and Scripts -->
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
 
     <style>
         
@@ -80,7 +86,8 @@
           color: #ffffff; 
         }
 
-        
+        #map { height: 780px; }
+
         </style>
 
 </head>
@@ -133,7 +140,7 @@
                               <div class="card-body text-center">
                                 <h5 class="center-1">Search Batsman Name or Select using the Chart</h5>
                                 <br>
-                                <form autocomplete="off" action="/ipl/batsman.html" target="_blank">
+                                <form autocomplete="off" action="/batsman.html" target="_blank">
                                   <div class="autocomplete" style="width:300px;">
                                     <input id="batsman" type="text" name="player" placeholder="Player Name" required>
                                   </div>
@@ -167,7 +174,7 @@
                               <div class="card-body text-center">
                                 <h5 class="center-1">Search Bowler Name or Select using the Chart</h5>
                                 <br>
-                                <form autocomplete="off" action="/ipl/bowler.html" target="_blank">
+                                <form autocomplete="off" action="/bowler.html" target="_blank">
                                   <div class="autocomplete" style="width:300px;">
                                     <input id="bowler" type="text" name="player" placeholder="Player Name" required>
                                   </div>
@@ -203,7 +210,7 @@
                               <div class="card-body text-center">
                                 <h5 class="center-1">Comparison Between two Batsmen</h5>
                                 <br>
-                                <form autocomplete="off" action="/ipl/compare-batsmen.html" target="_blank">
+                                <form autocomplete="off" action="/compare-batsmen.html" target="_blank">
                                   <div class="autocomplete" style="width:300px;">
                                     <input id="batsman1" type="text" name="player1" placeholder="Player 1" required>
                                   </div>
@@ -225,7 +232,7 @@
                             <div class="card-body text-center">
                               <h5 class="center-1">Comparison Between two Bowlers</h5>
                               <br>
-                              <form autocomplete="off" action="/ipl/compare-bowlers.html" target="_blank">
+                              <form autocomplete="off" action="/compare-bowlers.html" target="_blank">
                                 <div class="autocomplete" style="width:300px;">
                                   <input id="bowler1" type="text" name="player1" placeholder="Player 1" required>
                                 </div>
@@ -249,7 +256,7 @@
                             <!--**********************************
                                           CHART 3
                             ***********************************-->
-                            <center><div class='tableauPlaceholder' id='viz1633002679022' style='position: relative'><noscript><a href='#'><img alt='IPL Venues ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;DataVisualizationGroup4&#47;IPLVenues&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='DataVisualizationGroup4&#47;IPLVenues' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;DataVisualizationGroup4&#47;IPLVenues&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /></object></div>    </center>            <script type='text/javascript'>                    var divElement = document.getElementById('viz1633002679022');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+                            <div id="map"></div>
 
                           </div>
                       </div>
@@ -484,7 +491,7 @@
             };
             myChart1.setOption(option1);
             myChart1.on('click', function (id){
-              window.open("/ipl/batsman.html?player="+id.name);                  
+              window.open("/batsman.html?player="+id.name);                  
             });
 
         }
@@ -563,11 +570,52 @@
             };
             myChart2.setOption(option2);
             myChart2.on('click', function (id){
-              window.open("/ipl/bowler.html?player="+id.name);                  
+              window.open("/bowler.html?player="+id.name);                  
             });
         }
         );
     </script>
+
+    <script>
+
+      $.get('https://rdpahalavan.pythonanywhere.com/static/venues.json',
+        function (most_runs) {
+          
+          var latitude = Object.values(most_runs).map(el=> el['Latitude']);
+          var longitude = Object.values(most_runs).map(el=> el['Longitude']);
+          var stadium = Object.values(most_runs).map(el=> el['Venue']);
+          var city = Object.values(most_runs).map(el=> el['City']);
+          var stadium_unique=[];
+          const occurrences = stadium.reduce(function (acc, curr) {
+            return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc
+          }, {});
+          
+          var greenIcon = L.icon({
+          iconUrl: 'https://rdpahalavan.pythonanywhere.com/static/stadium.png',
+          iconSize:[50, 50]   
+      });
+      
+      var map = L.map('map').setView([17.387140, 78.491684], 5);
+      L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmRwYWhhbGF2YW4iLCJhIjoiY2t2ZDhod3hnYjVnazJwcTZzdDR4M3dlaCJ9.fEmTKtF1J8f1iLGXd45YFQ', {
+          attribution: 'IPL Stadiums | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 14,
+          id: 'mapbox/streets-v11',
+          tileSize: 512,
+          zoomOffset: -1
+      }).addTo(map);
+      
+      for(i=0;i<stadium.length;i++){
+      if(stadium_unique.includes(stadium[i])){
+      continue;
+      }
+      var marker = L.marker([latitude[i], longitude[i]], {icon: greenIcon}).addTo(map);
+      
+      marker.bindPopup("Stadium: "+stadium[i]+"<br>City: "+city[i]+"<br>Total Matches: "+occurrences[stadium[i]]+"<br><a href='/stadium.html?stadium="+stadium[i]+"' target='_blank'>More Information</a>");
+      stadium_unique.push(stadium[i]);
+      }
+      
+      });
+      </script>
 
 </body>
 
