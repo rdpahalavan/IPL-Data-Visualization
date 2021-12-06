@@ -299,80 +299,80 @@ function changeLine(val, com){
     case 'Delhi Capitals': 
       loadOnceAgain('Delhi Capitals', 'Delhi Daredevils');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=b_arr;
-      option1["series"][1]["name"]='Toss Win';
+      option1["series"][1]["data"]=c_arr;
+      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Delhi Capitals';
       break;
       case 'Kolkata Knight Riders': 
       loadOnceAgain('Kolkata Knight Riders', 'Kolkata Knight Riders');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=b_arr;
-      option1["series"][1]["name"]='Toss Win';
+      option1["series"][1]["data"]=c_arr;
+      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Kolkata Knight Riders';
       break;
       case 'Punjab Kings': 
       loadOnceAgain('Punjab Kings', 'Kings XI Punjab');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=b_arr;
-      option1["series"][1]["name"]='Toss Win';
+      option1["series"][1]["data"]=c_arr;
+      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Punjab Kings';
       break;
       case 'Rajasthan Royals': 
       loadOnceAgain('Rajasthan Royals', 'Rajasthan Royals');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=b_arr;
-      option1["series"][1]["name"]='Toss Win';
+      option1["series"][1]["data"]=c_arr;
+      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Rajasthan Royals';
       break;
       case 'Sunrisers Hyderabad': 
       loadOnceAgain('Sunrisers Hyderabad', 'Sunrisers Hyderabad');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=b_arr;
-      option1["series"][1]["name"]='Toss Win';
+      option1["series"][1]["data"]=c_arr;
+      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Sunrisers Hyderabad';
       break;
       case 'Deccan Chargers': 
       loadOnceAgain('Deccan Chargers', 'Deccan Chargers');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=b_arr;
-      option1["series"][1]["name"]='Toss Win';
+      option1["series"][1]["data"]=c_arr;
+      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Deccan Chargers';
       break;
       case 'Gujarat Lions': 
       loadOnceAgain('Gujarat Lions', 'Gujarat Lions');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=b_arr;
-      option1["series"][1]["name"]='Toss Win';
+      option1["series"][1]["data"]=c_arr;
+      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Gujarat Lions';
       break;
       case 'Pune Warriors India': 
       loadOnceAgain('Pune Warriors India', 'Pune Warriors');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=b_arr;
-      option1["series"][1]["name"]='Toss Win';
+      option1["series"][1]["data"]=c_arr;
+      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Pune Warriors India';
       break;
       case 'Rising Pune Supergiant': 
       loadOnceAgain('Rising Pune Supergiant', 'Rising Pune Supergiants');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=b_arr;
-      option1["series"][1]["name"]='Toss Win';
+      option1["series"][1]["data"]=c_arr;
+      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Rising Pune Supergiant';
       break;
       case 'Kochi Tuskers Kerala': 
       loadOnceAgain('Kochi Tuskers Kerala', 'Kochi Tuskers Kerala');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=b_arr;
-      option1["series"][1]["name"]='Toss Win';
+      option1["series"][1]["data"]=c_arr;
+      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Kochi Tuskers Kerala';
       break;
