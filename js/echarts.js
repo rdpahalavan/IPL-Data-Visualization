@@ -272,107 +272,84 @@ $.get('https://rdpahalavan.pythonanywhere.com/static/venues.json',
 loadOnceAgain('CSK', 'CSK', 'Total Matches');
 
 function changeLine(val, com){
-  if(com==3){document.getElementById("value3").innerHTML =val+" &#9662;";document.getElementById("value4").innerHTML ='Toss Win'+" &#9662;";overall = 0;}
+  if(com==3){document.getElementById("value3").innerHTML =val+" &#9662;";document.getElementById("value4").innerHTML ='Match Win'+" &#9662;";overall = 0;}
   if(com==4){document.getElementById("value4").innerHTML =val+" &#9662;";}
   switch(val){
     case 'Chennai Super Kings': 
       loadOnceAgain('Chennai Super Kings', 'Chennai Super Kings');
       option1["series"][0]["data"]=a_arr;
-      
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Chennai Super Kings';
       break;
     case 'Mumbai Indians': 
       loadOnceAgain('Mumbai Indians', 'Mumbai Indians');
       option1["series"][0]["data"]=a_arr;
-      
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Mumbai Indians';
       break;
     case 'Royal Challengers Bangalore': 
       loadOnceAgain('Royal Challengers Bangalore', 'Royal Challengers Bangalore');
       option1["series"][0]["data"]=a_arr;
-      
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Royal Challengers Bangalore';
       break;
     case 'Delhi Capitals': 
       loadOnceAgain('Delhi Capitals', 'Delhi Daredevils');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=c_arr;
-      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Delhi Capitals';
       break;
       case 'Kolkata Knight Riders': 
       loadOnceAgain('Kolkata Knight Riders', 'Kolkata Knight Riders');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=c_arr;
-      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Kolkata Knight Riders';
       break;
       case 'Punjab Kings': 
       loadOnceAgain('Punjab Kings', 'Kings XI Punjab');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=c_arr;
-      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Punjab Kings';
       break;
       case 'Rajasthan Royals': 
       loadOnceAgain('Rajasthan Royals', 'Rajasthan Royals');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=c_arr;
-      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Rajasthan Royals';
       break;
       case 'Sunrisers Hyderabad': 
       loadOnceAgain('Sunrisers Hyderabad', 'Sunrisers Hyderabad');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=c_arr;
-      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Sunrisers Hyderabad';
       break;
       case 'Deccan Chargers': 
       loadOnceAgain('Deccan Chargers', 'Deccan Chargers');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=c_arr;
-      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Deccan Chargers';
       break;
       case 'Gujarat Lions': 
       loadOnceAgain('Gujarat Lions', 'Gujarat Lions');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=c_arr;
-      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Gujarat Lions';
       break;
       case 'Pune Warriors India': 
       loadOnceAgain('Pune Warriors India', 'Pune Warriors');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=c_arr;
-      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Pune Warriors India';
       break;
       case 'Rising Pune Supergiant': 
       loadOnceAgain('Rising Pune Supergiant', 'Rising Pune Supergiants');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=c_arr;
-      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Rising Pune Supergiant';
       break;
       case 'Kochi Tuskers Kerala': 
       loadOnceAgain('Kochi Tuskers Kerala', 'Kochi Tuskers Kerala');
       option1["series"][0]["data"]=a_arr;
-      option1["series"][1]["data"]=c_arr;
-      option1["series"][1]["name"]='Match Win';
       myChart1.setOption(option1);
       document.getElementById("value1").innerHTML ='Kochi Tuskers Kerala';
       break;
