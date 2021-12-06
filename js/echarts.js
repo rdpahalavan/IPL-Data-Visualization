@@ -254,9 +254,9 @@ $.get('https://rdpahalavan.pythonanywhere.com/static/venues.json',
           }
         },
         {
-          name: 'Toss Win',
+          name: 'Match Win',
           type: 'line',
-          data: b_arr
+          data: c_arr
         }
       ]
     };
