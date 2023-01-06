@@ -68,7 +68,7 @@ myChart9.showLoading();
 
 // LOADING DATASET
 
-$.get('https://raw.githubusercontent.com/rdpahalavan/IPL-Data-Visualization/main/dataset/most_wickets.json',
+$.get('dataset/most_runs.json',
   function (most_wickets) {
     myChart1.hideLoading();
     myChart2.hideLoading();
