@@ -17,7 +17,7 @@ myChart1.showLoading();
 
 // LOADING DATASET
 
-$.get('https://rdpahalavan.pythonanywhere.com/static/most_wickets.json',
+$.get('https://raw.githubusercontent.com/rdpahalavan/IPL-Data-Visualization/main/dataset/most_wickets.json',
   function (most_wickets) {
     myChart1.hideLoading();
 
