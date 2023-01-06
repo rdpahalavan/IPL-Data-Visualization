@@ -1,4 +1,4 @@
-# IPL Data Visualization 2021
+# Indian Premier League (IPL) Data Visualization 2021
 
 This is the data analysis and data visualization project using JavaScript and Python. Apache ECharts is the visualization library used. The analysis and visualization consist of the top 200 players in the Indian Premier League (IPL) - the most watched Cricket league in the world. The project also consists of all the stadiums and the information about where the games are played. The data is scraped from the tournament's official website using Beautiful Soup in Python. The dataset consists of all information from 2008 (the inaugural year) to 2021. After, the update was stopped because the official website had been revamped.
 
