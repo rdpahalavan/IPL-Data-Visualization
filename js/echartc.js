@@ -17,7 +17,7 @@ myChart1.showLoading();
 
 // LOADING DATASET
 
-$.get('https://rdpahalavan.pythonanywhere.com/static/most_runs.json',
+$.get('https://raw.githubusercontent.com/rdpahalavan/IPL-Data-Visualization/main/dataset/most_runs.json',
   function (most_runs) {
     myChart1.hideLoading();
 
