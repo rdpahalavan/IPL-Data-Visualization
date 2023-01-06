@@ -68,7 +68,7 @@ myChart9.showLoading();
 
 // LOADING DATASET
 
-$.get('dataset/most_runs.json',
+$.get('dataset/most_wickets.json',
   function (most_wickets) {
     myChart1.hideLoading();
     myChart2.hideLoading();
