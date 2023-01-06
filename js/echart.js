@@ -68,7 +68,7 @@ myChart9.showLoading();
 
 // LOADING DATASET
 
-$.get('https://raw.githubusercontent.com/rdpahalavan/IPL-Data-Visualization/main/dataset/most_runs.json',
+$.get('dataset/most_runs.json',
   function (most_runs) {
     myChart1.hideLoading();
     myChart2.hideLoading();
