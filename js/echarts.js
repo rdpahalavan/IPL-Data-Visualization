@@ -37,7 +37,7 @@ var option1;
 myChart1.showLoading();
 
 function loadOnceAgain(team_name1, team_name2){
-$.get('https://rdpahalavan.pythonanywhere.com/static/venues.json',
+$.get('https://raw.githubusercontent.com/rdpahalavan/IPL-Data-Visualization/main/dataset/venues.json',
   function (most_runs) {
     myChart1.hideLoading();
 
