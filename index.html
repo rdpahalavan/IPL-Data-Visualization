@@ -429,7 +429,7 @@
     
     <script src="js/custom.min.js"></script>
    
-    <script src="js/echart.js"></script>
+    <script src="js/echart.js?1"></script>
 
     <script>
         // CHART 1 INITIOALIZATION
@@ -454,7 +454,7 @@
         var sixes_array = {};
         var fours_array = {};
 
-        $.get('https://rdpahalavan.pythonanywhere.com/static/most_runs.json',
+        $.get('dataset/most_runs.json',
          function (most_runs) {
             name_array = Object.keys(most_runs).map(el=> el);
             var m1 = Object.values(most_runs).map(el=> el['Matches All']);
@@ -567,7 +567,7 @@
         var dot_balls_array = {};
         var maiden_overs_array = {};
 
-        $.get('https://rdpahalavan.pythonanywhere.com/static/most_wickets.json',
+        $.get('dataset/most_wickets.json',
          function (most_wickets) {
 
             named_array = Object.keys(most_wickets).map(el=> el);
@@ -773,7 +773,7 @@
 
     <script>
 
-      $.get('https://rdpahalavan.pythonanywhere.com/static/venues.json',
+      $.get('dataset/venues.json',
         function (most_runs) {
           
           var latitude = Object.values(most_runs).map(el=> el['Latitude']);
