@@ -4,4 +4,4 @@ This is the data analysis and data visualization project using JavaScript and Py
 
 🔗 **[Click Here to view the Visualization](https://rdpahalavan.github.io/IPL-Data-Visualization/)**
 
-#### Click the Player name or search for the player name. For stadiums, click the stadium on the map and click 'More Information.'
+###### Click the Player name or search for the player name. For stadiums, click the stadium on the map and click 'More Information.'
